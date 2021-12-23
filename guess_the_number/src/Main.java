@@ -9,7 +9,6 @@ public class Main {
         while (play == true) {
             Random num = new Random();
             int random_number = num.nextInt(1, 20);
-            System.out.println(random_number);
             Scanner guess_the_number = new Scanner(System.in);
             System.out.println("Welcome to the Guessing Game!");
             System.out.println("Let's start by grabbing your name.");
