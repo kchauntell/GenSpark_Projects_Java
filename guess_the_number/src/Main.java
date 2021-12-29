@@ -36,7 +36,6 @@ public class Main {
   public static void main(String [] args) {
     int random_num = HelperClass.getRandomNumber();
     int count = 6;
-    System.out.println(random_num);
     Scanner guess_the_number = new Scanner(System.in);
     System.out.println("Welcome to the Guessing Game!");
     System.out.println("Let's start by grabbing your name.");
