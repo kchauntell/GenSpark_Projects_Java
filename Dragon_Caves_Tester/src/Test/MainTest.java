@@ -9,16 +9,17 @@ public class MainTest {
 
   @BeforeEach
   void setUp() {
+
     dragonTest = new Main();
   }
 
+  @DisplayName("Test Chosen Path")
   @Test
-  void chooseCave() {
-//    assertEquals("Welcome Friend, want to share my wealth?!", dragonTest.chooseCave(), "Should return Message for Path 1");
-    assertEquals("You approach the case..." +
-        "\nIt is dark and spooky..." +
-        "\nA large dragon jumps out in front of you! He open his jaws and..." +
-        "\nGobbles you down in one bite!", dragonTest.chooseCave(), "Should return Message for Path 2");
+  void whichPath() {
+    assertEquals("wealth", dragonTest.whichPath("1"), "Should return 'wealth'");
+    assertEquals("death", dragonTest.whichPath("2"), "Should return 'death'");
+    assertEquals("blank", dragonTest.whichPath(""), "Should return 'blank'");
+    assertEquals("noOption", dragonTest.whichPath("7"), "Should return 'noOption'");
   }
 
   @AfterEach
