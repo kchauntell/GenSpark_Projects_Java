@@ -1,13 +1,11 @@
 
 import org.junit.jupiter.api.*;
-//import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class MainTest {
-
+  // initialize variable to call upon methods in main.
   Main dragonTest;
-
-
   //this will run before each test, multiple test = multiple before actions
   @BeforeEach
   void setUp() {
@@ -19,10 +17,10 @@ public class MainTest {
   @Test
   //will test whichPath method with each potential option.
   void whichPath() {
-    Assertions.assertEquals("wealth", dragonTest.whichPath("1"), "Should return 'wealth'");
-    Assertions.assertEquals("death", dragonTest.whichPath("2"), "Should return 'death'");
-    Assertions.assertEquals("blank", dragonTest.whichPath(""), "Should return 'blank'");
-    Assertions.assertEquals("noOption", dragonTest.whichPath("7"), "Should return 'noOption'");
+    assertEquals("wealth", dragonTest.whichPath("1"), "Should return 'wealth'");
+    assertEquals("death", dragonTest.whichPath("2"), "Should return 'death'");
+    assertEquals("blank", dragonTest.whichPath(""), "Should return 'blank'");
+    assertEquals("noOption", dragonTest.whichPath("7"), "Should return 'noOption'");
   }
 
   @AfterEach
