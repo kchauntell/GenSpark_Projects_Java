@@ -1,9 +1,6 @@
 import java.util.Scanner;
 
 public class Main {
-  public static String getDragonName(String name) {
-    return "If you wish, you shall call me" + name;
-  }
   public static String whichPath (String option) {
     String choice;
     switch (option) {
