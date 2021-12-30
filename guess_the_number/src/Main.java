@@ -5,8 +5,7 @@ class HelperClass {
   // Generates the Random number to be Guessed
   public static int getRandomNumber () {
     Random number = new Random();
-    int num = number.nextInt(1, 20);
-    return num;
+    return number.nextInt(1, 20);
   }
   // Check input for if user  wants to play again...
   public static String playAgain(String answer) {
@@ -24,12 +23,13 @@ class HelperClass {
     return String.valueOf(result);
   }
   //Checks the guesses of the user, and provides response.
-  public static String Guesses(int one, int two) {
-    String result = "";
-    if(one > two)  result = "high";
-    else if (one < two) result = "low";
-    else if (one == two) result = "correct";
-    return result;
+  public static String Guesses(int guess, int random) {
+    String result;
+      if (guess < 1 || guess > 20 ) result = "oor";
+      else if(guess > random)  result = "high";
+      else if (guess < random) result = "low";
+      else result = "correct";
+      return result;
   }
 }
 
@@ -42,21 +42,22 @@ public class Main {
     //Sets up User input.
     Scanner guess_the_number = new Scanner(System.in);
     //Introduction to game.
-    System.out.println("Welcome to the Guessing Game!"+
-        "\nYou get 6 lives." +
-        "\nNow, let me ask you, what is your name?");
+    System.out.println("""
+        Welcome to the Guessing Game!
+        You get 6 lives.
+        Now, let me ask you, what is your name?""");
     //User input initialized for response here.
     String username = guess_the_number.nextLine();
     // try-catch blocks to run responses from user.
     // catch block set for empty string/ blank responses.
     try {
       if (username.equals("")) throw new Exception();
-      else System.out.println(String.format("Hello, %s, Let's Play!.", username));
+      else System.out.printf("Hello, %s, Let's Play!.%n", username);
     } catch (Exception e) {
       System.out.println("Please Provide a name.");
       //This asks for another entry to user for provide a valid name, once blank response caught.
       username = guess_the_number.nextLine();
-      System.out.println(String.format("Hello, %s, Let's Play!.", username));
+      System.out.printf("Hello, %s, Let's Play!.%n", username);
     }
     System.out.println("What do you think the number is, between 1 and 20?");
     while(count != 0) {
@@ -68,16 +69,17 @@ public class Main {
           //Decrements the count, wrong guess, and lets user know guess is greater than random number
           case "high" -> {
             count--;
-            System.out.println(String.format("Guessed Too High! Try Again.\nYou have %s lives left.", count));
+            System.out.printf("Guessed Too High! Try Again.\nYou have %s lives left.%n", count);
           }
           case "low" -> {
             count--;
-            System.out.println(String.format("Guess Too Low! Try Again.\nYou have %s lives left.", count));
+            System.out.printf("Guess Too Low! Try Again.\nYou have %s lives left.%n", count);
           }
           case "correct" -> {
             System.out.println("You Guessed it!");
             count = 0;
           }
+          case "oor" -> System.out.println("Guess out of range.");
           default -> throw new Exception();
         }
       } catch (Exception e) {
@@ -91,9 +93,7 @@ public class Main {
       //helper function to determine to continue game....
       switch(HelperClass.playAgain(answer)) {
         case "true" -> main(args);
-        case "false" -> {
-          System.out.println("GoodBye"); break;
-        }
+        case "false" -> System.out.println("GoodBye");
         default -> throw new Exception();
       }
     } catch (Exception e) {
@@ -101,9 +101,7 @@ public class Main {
       String newAnswer = guess_the_number.nextLine();
       switch(HelperClass.playAgain(newAnswer)) {
         case "true" -> main(args);
-        case "false" -> {
-          System.out.println("GoodBye"); break;
-        }
+        case "false" -> System.out.println("GoodBye");
       }
     }
   }
