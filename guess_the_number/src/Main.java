@@ -63,6 +63,17 @@ public class Main {
     while(count != 0) {
       String guess = guess_the_number.nextLine();
       try {
+        //This try/catch block will account for a blank entry
+        // an empty string cannot be converted into an empty parseInt
+        // so taking in account for an empty string is initially running the string input
+        // for an empty value. If caught, sends a message and continues the loop until exit. 
+        try{
+          if(guess.equals("")) throw new Exception();
+        }catch (Exception e){
+          System.out.println("You entered a blank guess");
+          //this will continue the while loop run, without exiting the loop.
+          continue;
+        }
         int numGuess = Integer.parseInt(guess);
         //uses helper class method to use comparison operators: guess vs. random number.
         switch(HelperClass.Guesses(numGuess, random_num)) {
