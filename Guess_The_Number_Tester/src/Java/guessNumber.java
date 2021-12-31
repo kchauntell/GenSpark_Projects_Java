@@ -31,7 +31,6 @@ public class guessNumber {
     else result = "correct";
     return result;
   }
-
   public static void main(String [] args) {
     //Setting random number to be guessed. Imported java.util.Random method.
     int random_num = getRandomNumber();
