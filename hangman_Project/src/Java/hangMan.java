@@ -104,17 +104,17 @@ public class hangMan {
   public static void main(String[] args) throws Exception {
     int randomNum = getRandomNumber();
     String randomWord = getRandomWord(randomNum);
-    int count = 6;
     Scanner hangManInput = new Scanner(System.in);
     System.out.println(
         """
             Welcome to HangMan...
             Guess the word in just 6 tries.
             Guess one letter at a time.
-                    
+
             Let's Start... What word am I thinking of?
             """
     );
+
 
     char[] guessWordArr = randomWord.toCharArray();
     char[] userGuessArr = new char[guessWordArr.length];
@@ -127,16 +127,16 @@ public class hangMan {
     int lives = 6;
 
     while (finished == false) {
-      String letter = hangManInput.next();
+      String guess = hangManInput.next();
 
-      while (letter.length() != 1 || Character.isDigit(letter.charAt(0))) {
+      while (guess.length() != 1 || Character.isDigit(guess.charAt(0))) {
         System.out.println("Invalid input. DO IT OVER!!!");
-        letter = hangManInput.next();
+        guess = hangManInput.next();
       }
 
       boolean discovered = false;
       for (var i = 0; i < guessWordArr.length; i++) {
-        if (letter.charAt(0) == guessWordArr[i]) {
+        if (guess.charAt(0) == guessWordArr[i]) {
           userGuessArr[i] = guessWordArr[i];
           discovered = true;
         }
@@ -166,9 +166,26 @@ public class hangMan {
         finished = true;
       }
 
-      if (lives <= 0) {
+      if (lives == 0) {
         System.out.println("You don't know WHAT I be thinking!!!");
         finished = true;
+      }
+    }
+    System.out.println("Would you like to play again? (yes/no)");
+    String answer = hangManInput.nextLine();
+    try {
+      //helper function to determine to continue game....
+      switch(playAgain(answer)) {
+        case "true" -> main(args);
+        case "false" -> System.out.println("GoodBye");
+        default -> throw new Exception();
+      }
+    } catch (Exception e) {
+      //Will initiate one more chance to provide valid response.
+      String newAnswer = hangManInput.nextLine();
+      switch(playAgain(newAnswer)) {
+        case "true" -> main(args);
+        case "false" -> System.out.println("GoodBye");
       }
     }
   }
