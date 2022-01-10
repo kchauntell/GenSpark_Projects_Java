@@ -20,18 +20,156 @@ public class hangMan {
     return wordsList.get(num);
   }
 
-  //Create a method to check the guess.
+  public static String playAgain(String answer) {
+    Boolean result = null;
+    try {
+      switch (answer) {
+        case "yes" -> result = true;
+        case "no" -> result = false;
+        default -> throw new Exception();
+      }
+    } catch (Exception e) {
+      System.out.println("Blank/Invalid Response: Need to answer yes or no." +
+          "\nTwo consecutive Invalid/Blank Responses is automatic shut down of Game!");
+    }
+    return String.valueOf(result);
+  }
+
+  public static void drawHangMan (int l) {
+    if(l == 6) {
+      System.out.println("|----------");
+      System.out.println("|");
+      System.out.println("|");
+      System.out.println("|");
+      System.out.println("|");
+      System.out.println("|");
+      System.out.println("|");
+    }
+    else if(l == 5) {
+      System.out.println("|----------");
+      System.out.println("|    O");
+      System.out.println("|");
+      System.out.println("|");
+      System.out.println("|");
+      System.out.println("|");
+      System.out.println("|");
+    }
+    else if(l == 4) {
+      System.out.println("|----------");
+      System.out.println("|    O");
+      System.out.println("|    |");
+      System.out.println("|");
+      System.out.println("|");
+      System.out.println("|");
+      System.out.println("|");
+    }
+    else if(l == 3) {
+      System.out.println("|----------");
+      System.out.println("|    O");
+      System.out.println("|   -|");
+      System.out.println("|");
+      System.out.println("|");
+      System.out.println("|");
+      System.out.println("|");
+    }
+    else if(l == 2) {
+      System.out.println("|----------");
+      System.out.println("|    O");
+      System.out.println("|   -|-");
+      System.out.println("|");
+      System.out.println("|");
+      System.out.println("|");
+      System.out.println("|");
+    }
+    else if(l == 1) {
+      System.out.println("|----------");
+      System.out.println("|    O");
+      System.out.println("|   -|-");
+      System.out.println("|   /");
+      System.out.println("|");
+      System.out.println("|");
+      System.out.println("|");
+    }
+    else{
+      System.out.println("|----------");
+      System.out.println("|    O");
+      System.out.println("|   -|-");
+      System.out.println("|   /|");
+      System.out.println("|");
+      System.out.println("|");
+      System.out.println("|");
+    }
+  }
 
   public static void main(String[] args) throws Exception {
     int randomNum = getRandomNumber();
     String randomWord = getRandomWord(randomNum);
-    System.out.println(randomWord);
+    int count = 6;
     Scanner hangManInput = new Scanner(System.in);
-//    System.out.println(
-//        """
-//        Welcome to
-//        """
-//    );
+    System.out.println(
+        """
+            Welcome to HangMan...
+            Guess the word in just 6 tries.
+            Guess one letter at a time.
+                    
+            Let's Start... What word am I thinking of?
+            """
+    );
 
+    char[] guessWordArr = randomWord.toCharArray();
+    char[] userGuessArr = new char[guessWordArr.length];
+
+    for (var i = 0; i < guessWordArr.length; i++) {
+      userGuessArr[i] = '?';
+    }
+
+    boolean finished = false;
+    int lives = 6;
+
+    while (finished == false) {
+      String letter = hangManInput.next();
+
+      while (letter.length() != 1 || Character.isDigit(letter.charAt(0))) {
+        System.out.println("Invalid input. DO IT OVER!!!");
+        letter = hangManInput.next();
+      }
+
+      boolean discovered = false;
+      for (var i = 0; i < guessWordArr.length; i++) {
+        if (letter.charAt(0) == guessWordArr[i]) {
+          userGuessArr[i] = guessWordArr[i];
+          discovered = true;
+        }
+      }
+
+      if (!discovered) {
+        lives--;
+        System.out.println("Dead Wrong!");
+      }
+
+      boolean done = true;
+
+      for (var i = 0; i < userGuessArr.length; i++) {
+        if (userGuessArr[i] == '?') {
+          System.out.println(" _");
+          done = false;
+        } else {
+          System.out.println(" " + userGuessArr[i]);
+        }
+      }
+      System.out.println("\n" + "Lives Left: " + lives);
+      drawHangMan(lives);
+
+
+      if (done) {
+        System.out.println("Congrats! You can read my mind, you little Genius");
+        finished = true;
+      }
+
+      if (lives <= 0) {
+        System.out.println("You don't know WHAT I be thinking!!!");
+        finished = true;
+      }
+    }
   }
 }
