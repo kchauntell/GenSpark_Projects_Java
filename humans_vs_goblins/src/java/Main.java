@@ -9,9 +9,14 @@ public class Main {
 //    System.out.println(Goblins.level("easy"));
 //    System.out.println(Goblins.level("medium"));
 //    System.out.println(Goblins.level("hard"));
-//    System.out.println(new Land());
+    System.out.println(new Land());
+//    System.out.println();
 
-    
+
+//    Map<String, Integer> grid = new HashMap<String, Integer>(10);
+//    System.out.println(grid);
+//    System.out.println(new GameMap());
+
 
   }
 }
