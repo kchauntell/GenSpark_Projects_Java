@@ -9,7 +9,8 @@ public class Main {
 //    System.out.println(Goblins.level("easy"));
 //    System.out.println(Goblins.level("medium"));
 //    System.out.println(Goblins.level("hard"));
-    System.out.println(new Land());
+//    System.out.println(new Land());
+    System.out.println(Arrays.deepToString(GameMap.gameMap));
 //    System.out.println();
 
 
