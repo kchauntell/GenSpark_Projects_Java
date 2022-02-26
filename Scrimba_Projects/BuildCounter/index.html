@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Counter</title>
+  <link href="index.css" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <h1> People/Objects counted: </h1>
+  </header>
+  <main>
+    <h2 id="count-el">0</h2>
+    <div class="btn">
+      <button class="increment-btn" onclick="increment()">INCREMENT</button>
+      <button
+        class="decrement-btn"
+        onclick="decrement()"
+        >DECREMENT</button>
+      <button class="save-btn" onclick="save()">SAVE</button>
+      <p id="save-el"> Previous Count: </p>
+      <script src="index.js"></script>
+      <button id="reset" onclick="reset()">RESET</button>
+    </div>
+  </main>
+</body>
+
+</html>

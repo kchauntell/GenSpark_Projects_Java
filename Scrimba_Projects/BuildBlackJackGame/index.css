@@ -1,0 +1,61 @@
+body {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-image:url("./images/table4.avif");
+  background-size: cover;
+  text-align: center;
+  font-weight: bold;
+}
+
+h1{
+  color: rgb(246, 190, 48);
+  text-shadow: -4px 3px 0 grey, -14px 7px 0 #000106;
+  font-size: 50px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+
+p {
+  color:rgb(248, 203, 89) ;
+  text-shadow: -4px 3px 0 black;
+  margin: 10px auto;
+}
+
+#sum-el{
+  font-size: 25px;
+  font-weight:bold;
+}
+
+#cards-el {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+#message-el{
+  font-size: 25px;
+  font-style:italic;
+  text-shadow: -4px 3px 0 grey, -14px 7px 0 #000106;
+}
+
+
+#start-game {
+  font-weight: bold;
+  font-size: 30px;
+  color: rgb(246, 190, 48);
+  text-decoration: underline;
+  border: none;
+  background-color: rgb(0,0,0,0.0);
+  text-shadow: -4px 3px 0 black, -14px 10px 0 black;
+  margin: 10px auto;
+}
+
+#new-card {
+  font-weight: bold;
+  font-size: 30px;
+  color: rgb(246, 190, 48);
+  text-decoration: underline;
+  border: none;
+  background-color: rgb(0,0,0,0.0);
+  text-shadow: -4px 3px 0 black, -14px 10px 0 black;
+  margin: 10px auto;
+}

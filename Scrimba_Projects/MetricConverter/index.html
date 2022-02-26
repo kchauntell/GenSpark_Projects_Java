@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <script src="index.js"></script>
+  <header>
+    <h1>Unit Converter</h1>
+  </header>
+
+  <div id="top">
+    <h1>Metric/Imperial Unit Conversion</h1>
+    <input id="number" type="number" />
+    <button id="submit" type="submit" onclick="onSubmit()">Calculate</button>
+    <h2 id="conversion">0</h2>
+  </div>
+
+  <div id="metricList">
+    <div class="metric">
+      Length(Meter/Feet)
+      <p class="p" id="meterFeet">...</p>
+    </div>
+    <div class="metric">
+      Volume(Liters/Gallons)
+      <p class="p" id="literGallon">...</p>
+    </div>
+    <div class="metric">
+      Mass(Kilograms/Pounds)
+      <p class="p" id="kgPounds">...</p>
+    </div>
+  </div>
+
+  </main>
+</body>
+
+</html>
